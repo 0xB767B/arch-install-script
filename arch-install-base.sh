@@ -70,21 +70,21 @@ set_timezone() {
 }
 
 generate_adjtime() {
-	cp locale.gen /mnt/etc/
+	cp ./files/etc/locale.gen /mnt/etc/
 	arch_chroot "locale-gen"
-	cp locale.conf /mnt/etc
+	cp ./files/etc/locale.conf /mnt/etc
 }
 
 set_keyboard_layout() {
-	cp vconsole.conf /mnt/etc
+	cp ./files/etc/vconsole.conf /mnt/etc
 }
 
 configure_hostname() {
-	cp hostname /mnt/etc/
+	cp ./files/etc/hostname /mnt/etc/
 }
 
 configure_hosts() {
-	cp hosts /mnt/etc
+	cp ./files/etc/hosts /mnt/etc
 }
 
 create_initramfs() {
@@ -98,9 +98,9 @@ set_root_password() {
 
 install_bootloader() {
 	arch_chroot "bootctl install"
-	cp arch-uefi.conf /mnt/boot/loader/entries
-	cp arch-uefi-fallback.conf /mnt/boot/loader/entries
-	cp loader.conf /mnt/boot/loader
+	cp ./files/boot/loader/entries/arch-uefi.conf /mnt/boot/loader/entries
+	cp ./files/boot/loader/entries/arch-uefi-fallback.conf /mnt/boot/loader/entries
+	cp ./files/boot/loader/loader.conf /mnt/boot/loader
 }
 
 installation_finished() {
